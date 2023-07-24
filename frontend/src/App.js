@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -16,9 +16,10 @@ console.log(message)
       setResponseMessage('An error occurred while processing the message.');
     }
   };
+
   return (
-    <div className="App">
-     <h1>Extract Coupon and PIN</h1>
+    <div>
+      <h1>Extract Coupon and PIN</h1>
       <form onSubmit={handleMessageSubmit}>
         <textarea
           rows="10"
