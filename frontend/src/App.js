@@ -8,7 +8,7 @@ console.log(message)
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/processMessage', { message });
+      const response = await axios.post('https://text-extract-inky.vercel.app/api/processMessage', { message });
 
       setResponseMessage(response.data.message);
     } catch (error) {
