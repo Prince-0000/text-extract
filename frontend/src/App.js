@@ -15,11 +15,9 @@ function App() {
   const [responseMessage, setResponseMessage] = useState('');
   const [loading, setLoading] = useState(false); // Loading state
 
-  const handleMessageSubmit = debounce(async (e) => {
-    e.preventDefault();
-    setLoading(true); // Show loading state
-
+  const saveMessageToAirtable = async (message) => {
     try {
+      setLoading(true); // Show loading state
       const response = await axios.post('https://text-extract-inky.vercel.app/api/processMessage', { message });
       setResponseMessage(response.data.message);
     } catch (error) {
@@ -28,7 +26,14 @@ function App() {
     } finally {
       setLoading(false); // Hide loading state
     }
-  }, 1000); // Adjust the debounce delay as per your requirements
+  };
+
+  const debouncedSaveToAirtable = debounce(saveMessageToAirtable, 1000); // Adjust the debounce delay as per your requirements
+
+  const handleMessageSubmit = (e) => {
+    e.preventDefault();
+    debouncedSaveToAirtable(message); // Apply debounce to the API call
+  };
 
   return (
     <div>
