@@ -86,8 +86,8 @@ const fs = require('fs');
 const app = express();
 const PORT = 5000;
 app.use(cors({
-    origin:'https://text-extract-w.vercel.app/'
-}));
+    origin: "https://text-extract-w.vercel.app"
+  }));
 app.use(express.json());
 
 const airtableApiKey = 'keyxC5y4yJk0lDjJg'; // Replace with your Airtable API key
