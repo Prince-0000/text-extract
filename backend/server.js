@@ -67,23 +67,24 @@ axios.interceptors.request.use(request => {
     return response;
   });
   
-app.post('/api/processMessage', (req, res) => {
-  const { message } = req.body;
-  console.log("Message",message)
-
-  if (!message) {
-    return res.status(400).json({ message: 'Message is required.' });
-  }
-
-  const { coupon, pin } = extractCouponAndPIN(message);
-
-  if (coupon && pin) {
-    saveToAirtable(coupon, pin);
-    return res.json({ message: 'Coupon and PIN values extracted and saved to Airtable.' });
-  } else {
-    return res.json({ message: 'Coupon and/or PIN value not found in the message.' });
-  }
-});
+  app.post('/api/processMessage', async (req, res) => {
+    const { message } = req.body;
+    console.log("Message", message)
+  
+    if (!message) {
+      return res.status(400).json({ message: 'Message is required.' });
+    }
+  
+    const { coupon, pin } = extractCouponAndPIN(message);
+  
+    if (coupon && pin) {
+      // Use await here to ensure that the data is saved before sending the response
+      await saveToAirtable(coupon, pin);
+      return res.json({ message: 'Coupon and PIN values extracted and saved to Airtable.' });
+    } else {
+      return res.json({ message: 'Coupon and/or PIN value not found in the message.' });
+    }
+  });
 
 // app.listen(PORT, () => {
 //   console.log(`Server is running on port ${PORT}`);
