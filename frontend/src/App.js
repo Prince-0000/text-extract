@@ -9,7 +9,7 @@ function App() {
   const saveMessageToAirtable = async (message) => {
     try {
       setLoading(true); // Show loading state
-      const response = await axios.post('http://localhost:5000/api/processMessage', { message });
+      const response = await axios.post('https://text-extract-inky.vercel.app/api/processMessage', { message });
       setResponseMessage(response.data.message);
     } catch (error) {
       console.error(error);
