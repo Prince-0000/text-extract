@@ -4,12 +4,12 @@ import axios from 'axios';
 function App() {
   const [message, setMessage] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
-console.log(message)
+
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://text-extract-prince-0000.vercel.app/api/processMessage', { message });
-
+      const response = await axios.post('https://text-extract-inky.vercel.app/api/processMessage', { message });
+      console.log("Response",response)
       setResponseMessage(response.data.message);
     } catch (error) {
       console.error(error);
