@@ -10,9 +10,15 @@ function App() {
       const response = await axios.post('https://extractor-prince-0000.vercel.app/api/processMessage', { message });
 
       setResponseMessage(response.data.message);
+      setTimeout(() => {
+        setResponseMessage('');
+      }, 2000);
     } catch (error) {
       console.error(error);
       setResponseMessage('An error occurred while processing the message.');
+      setTimeout(() => {
+        setResponseMessage('');
+      }, 2000);
     }
   };
 
@@ -32,7 +38,7 @@ function App() {
         <button className='bg-black text-white sm:px-5 px-4 py-1 my-2 font-medium' type="submit">Submit</button>
       </form>
       <div className='font-medium sm:text-xl text-base my-1'>
-        {responseMessage && <p className='md:mx-2 mx-1 truncate'>{responseMessage}</p>}
+        {responseMessage && <p className='md:mx-2 mx-1 px-2 truncate'>{responseMessage}</p>}
       </div>
     </div>
   );
