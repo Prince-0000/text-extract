@@ -32,7 +32,7 @@ function App() {
         <button className='bg-black text-white sm:px-5 px-4 py-1 my-2 font-medium' type="submit">Submit</button>
       </form>
       <div className='font-medium sm:text-xl text-base my-1'>
-        {responseMessage && <p>{responseMessage}</p>}
+        {responseMessage && <p className='md:mx-2 mx-1 truncate'>{responseMessage}</p>}
       </div>
     </div>
   );
