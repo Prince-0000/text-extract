@@ -17,8 +17,8 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Extract Coupon and PIN</h1>
+    <div className='flex flex-col items-center justify-center'>
+      <h1 className='my-5 text-xl font-medium'>Extract Coupon and PIN</h1>
       <form onSubmit={handleMessageSubmit}>
         <textarea
           rows="10"
@@ -26,11 +26,12 @@ function App() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Enter your message here..."
+          className='sm:w-[30rem] w-[22rem] border border-black p-2 outline-none'
         />
         <br />
-        <button type="submit">Submit</button>
+        <button className='bg-black text-white sm:px-5 px-4 py-1 my-2 font-medium' type="submit">Submit</button>
       </form>
-      <div>
+      <div className='font-medium sm:text-xl text-base my-1'>
         {responseMessage && <p>{responseMessage}</p>}
       </div>
     </div>
