@@ -5,9 +5,7 @@ const fs = require('fs');
 
 const app = express();
 const PORT = 5000;
-app.use(cors({
-    origin: "https://text-extract-w.vercel.app"
-  }));
+app.use(cors());
 app.use(express.json());
 
 const airtableApiKey = 'keyxC5y4yJk0lDjJg'; // Replace with your Airtable API key
@@ -85,7 +83,8 @@ app.post('/api/processMessage', (req, res) => {
   }
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
-module.exports=app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
