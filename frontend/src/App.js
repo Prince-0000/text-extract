@@ -13,11 +13,20 @@ function App() {
       setTimeout(() => {
         setResponseMessage('');
       }, 2000);
+
+      setTimeout(() => {
+        setMessage('');
+      }, 2000);
+
     } catch (error) {
       console.error(error);
       setResponseMessage('An error occurred while processing the message.');
       setTimeout(() => {
         setResponseMessage('');
+      }, 2000);
+      
+      setTimeout(() => {
+        setMessage('');
       }, 2000);
     }
   };
